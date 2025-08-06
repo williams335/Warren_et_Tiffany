@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.sage.400') theme('colors.sage.100');
+  }
+  
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: theme('colors.sage.100');
+    border-radius: 6px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: theme('colors.sage.400');
+    border-radius: 6px;
+    border: 3px solid theme('colors.sage.100');
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: theme('colors.sage.500');
+  }
+  
+  body {
+    @apply font-body text-sage-900 bg-stone-50;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24;
+  }
+  
+  .section-title {
+    @apply text-center mb-12 relative font-heading text-5xl;
+  }
+  
+  .section-title::after {
+    content: "";
+    @apply block w-24 h-1 bg-gold-500 mx-auto mt-4;
+  }
+  
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent 
+    rounded-md shadow-sm text-base font-medium transition-all duration-200 focus:outline-none;
+  }
+  
+  .btn-primary {
+    @apply bg-sage-600 text-white hover:bg-sage-700 focus:ring-2 focus:ring-offset-2 focus:ring-sage-500;
+  }
+  
+  .btn-primary-animated {
+    position: relative;
+    display: inline-block;
+    padding: 12px 24px;
+    color: #68a771;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    letter-spacing: 2px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .btn-primary-animated:hover {
+    background: #68a771;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #68a771,
+                0 0 25px #52885b,
+                0 0 50px #68a771,
+                0 0 100px #52885b;
+  }
+
+  .btn-primary-animated span {
+    position: absolute;
+    display: block;
+  }
+
+  .btn-primary-animated span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #D4AF37);
+    animation: btn-anim1 1s linear infinite;
+  }
+
+  @keyframes btn-anim1 {
+    0% {
+      left: -100%;
+    }
+    50%,100% {
+      left: 100%;
+    }
+  }
+
+  .btn-primary-animated span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #D4AF37);
+    animation: btn-anim2 1s linear infinite;
+    animation-delay: .25s;
+  }
+
+  @keyframes btn-anim2 {
+    0% {
+      top: -100%;
+    }
+    50%,100% {
+      top: 100%;
+    }
+  }
+
+  .btn-primary-animated span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #D4AF37);
+    animation: btn-anim3 1s linear infinite;
+    animation-delay: .5s;
+  }
+
+  @keyframes btn-anim3 {
+    0% {
+      right: -100%;
+    }
+    50%,100% {
+      right: 100%;
+    }
+  }
+
+  .btn-primary-animated span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #D4AF37);
+    animation: btn-anim4 1s linear infinite;
+    animation-delay: .75s;
+  }
+
+  @keyframes btn-anim4 {
+    0% {
+      bottom: -100%;
+    }
+    50%,100% {
+      bottom: 100%;
+    }
+  }
+  
+  .btn-secondary {
+    @apply bg-gold-500 text-white hover:bg-gold-600 focus:ring-2 focus:ring-offset-2 focus:ring-gold-400;
+  }
+  
+  .btn-outline {
+    @apply bg-transparent border-sage-600 text-sage-600 hover:bg-sage-50 focus:ring-2 focus:ring-offset-2 focus:ring-sage-500;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg overflow-hidden border border-stone-100 shadow-lg
+    transition-all duration-300 ease-out transform
+    hover:shadow-xl hover:-translate-y-1 hover:scale-[1.01] hover:rotate-[0.5deg];
+  }
+
+  .card-static {
+    @apply bg-white rounded-lg overflow-hidden border border-stone-100 shadow-lg
+    transition-all duration-300 ease-out;
+  }
+  
+  .nav-link {
+    @apply px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200;
+  }
+  
+  .nav-link-active {
+    @apply bg-sage-100 text-sage-800;
+  }
+  
+  .nav-link-inactive {
+    @apply text-sage-700 hover:bg-sage-50 hover:text-sage-800;
+  }
+  
+  .timeline-item {
+    @apply relative pl-8 pb-8 border-l-2 border-sage-300 last:border-l-0;
+  }
+  
+  .timeline-dot {
+    @apply absolute -left-2 w-4 h-4 rounded-full bg-sage-500;
+  }
+  
+  .timeline-date {
+    @apply text-gold-600 font-medium mb-1;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-sage-700 mb-1;
+  }
+  
+  .form-input {
+    @apply block w-full rounded-md border-stone-300 shadow-sm 
+    focus:border-sage-500 focus:ring focus:ring-sage-500 focus:ring-opacity-50;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
